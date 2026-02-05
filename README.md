@@ -24,3 +24,10 @@ Tani merdeka merupakan sistem informasi pengelolaan data anggota tani merdeka, p
 - chore(Maintenance) : Tugas rutin, update library/dependency. **Contoh:** Update versi Laravel, update pubspec.yaml.
 - ci(CI/CD) : Perubahan pada script konfigurasi server/deploy. **Contoh:** Edit file github actions, dockerfile.
 
+###Lastly wajib konfigurasi .env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=tanimerdeka
+DB_USERNAME=postgres
+DB_PASSWORD=password kamu
