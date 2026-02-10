@@ -19,9 +19,9 @@ class AnggotaTani extends Model
         'jenis_kelamin',
         'email',
         'no_hp',
-        'indonesia_village_id', 
+        'indonesia_village_id',
         'alamat_detail',
-        'id_kelompok_tani',    
+        'id_kelompok_tani',
         'jabatan',
         'password',
         'role',
@@ -45,4 +45,11 @@ class AnggotaTani extends Model
     public function usaha_anggota(){
         return $this->hasMany(Usaha_anggota::class,'usaha_anggota','id_usaha');
     }
+
+    public function followers(){
+        return $this->belongsToMany(
+            User::class,'follower','follow_to','follow_from','id_anggota','id_user'
+    );
+    }
+
 }
