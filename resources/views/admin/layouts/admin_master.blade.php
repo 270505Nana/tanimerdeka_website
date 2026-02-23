@@ -19,16 +19,16 @@
 
 <body>
     <div class="dashboard-wrapper d-flex">
-        @include('components_admin.sidebar')
+        @include('admin.components_admin.sidebar')
 
         <main class="dashboard-main w-100">
-            @include('components_admin.header')
+            @include('admin.components_admin.header')
 
             <div class="dashboard-main-body">
                 @yield('content')
             </div>
 
-            @include('components_admin.footer')
+            @include('admin.components_admin.footer')
         </main>
     </div>
 
