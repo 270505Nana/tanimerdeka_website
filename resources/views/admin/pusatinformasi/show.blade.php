@@ -1,31 +1,23 @@
 @extends('admin.layouts.admin_master')
-
 @section('content')
-    <div class="container py-4">
-
-        <h4>Detail Pusat Informasi</h4>
-
-        <div class="card p-4">
-
-            <p>
-                <strong>Kategori :</strong>
-                {{ $data->kategori_informasi->jenis }}
-            </p>
-
-            @if ($data->image)
-                <img src="{{ asset('images/pusat-informasi/' . $data->image) }}" class="img-fluid mb-3" style="max-width:300px">
-            @endif
-
-            <div>
-                {!! $data->body !!}
+    <div class="container">
+        <h3 class="mb-4">Detail Pusat Informasi</h3>
+        <div class="card">
+            <img src="{{ asset('storage/' . $data->image) }}" class="card-img-top" style="height:350px; object-fit:cover;">
+            <div class="card-body">
+                <span class="badge bg-info mb-2">
+                    {{ $data->kategori_informasi->jenis }}
+                </span>
+                <p class="text-muted">
+                    {{ $data->created_at->format('d M Y') }}
+                </p>
+                <p>
+                    {{ $data->body }}
+                </p>
+                <a href="{{ route('admin.pusat-informasi.index') }}" class="btn btn-secondary">
+                    Kembali
+                </a>
             </div>
-
-            <a href="{{ route('admin.pusat-informasi.index') }}" class="btn btn-secondary mt-3">
-
-                Kembali
-
-            </a>
-
         </div>
 
     </div>

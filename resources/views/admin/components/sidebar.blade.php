@@ -1,10 +1,7 @@
 <aside class="sidebar">
-    <!-- Sidebar Close Button -->
     <button type="button" class="sidebar-close-btn">
         <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
     </button>
-
-    <!-- Sidebar Logo -->
     <div>
         <a href="index.html" class="sidebar-logo">
             <img src="{{ asset('assets/images/logo.png') }}" alt="site logo" class="light-logo">
@@ -16,7 +13,6 @@
     <!-- Sidebar Menu Area -->
     <div class="sidebar-menu-area">
         <ul class="sidebar-menu" id="sidebar-menu">
-            <!-- Dashboard -->
             <li>
                 <a href="{{ route('admin.dashboard') }}">
                     <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
@@ -56,20 +52,33 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="{{ route('admin.kabarberita.index') }}">Kabar Berita</a>
+                        <a href="{{ route('admin.kabar-berita.index') }}">Kabar Berita</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.kabarberita.create') }}">Add Berita</a>
+                        <a href="{{ route('admin.kabar-berita.create') }}">Add Berita</a>
                     </li>
                 </ul>
             </li>
 
             <!-- Pusat Informasi -->
-            <li>
-                <a href="{{ route('admin.pusat-informasi.index') }}">
+            <li class="dropdown">
+                <a href="javascript:void(0)">
                     <iconify-icon icon="material-symbols:map-outline" class="menu-icon"></iconify-icon>
                     <span>Pusat Informasi</span>
                 </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.pusat-informasi.index') }}">
+                            Daftar Informasi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.pusat-informasi.create') }}">
+                            Tambah Informasi
+                        </a>
+                    </li>
+
+                </ul>
             </li>
 
             <!-- Tentang Kami -->

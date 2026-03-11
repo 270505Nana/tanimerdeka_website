@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Kategori_informasi extends Model
 {
-     use HasFactory;
+    use HasFactory;
     protected $table = 'kategori_informasi';
     protected $primaryKey = 'id_kategori';
     protected $fillable = ['jenis'];

@@ -1,65 +1,49 @@
 @extends('admin.layouts.admin_master')
-
 @section('content')
-    <div class="container py-4">
-
-        <h4>Edit Pusat Informasi</h4>
-
+    <div class="container">
+        <h3 class="mb-4">Edit Pusat Informasi</h3>
         <form action="{{ route('admin.pusat-informasi.update', $data->id_informasi) }}" method="POST"
             enctype="multipart/form-data">
-
             @csrf
             @method('PUT')
 
             <div class="mb-3">
-
-                <label>Kategori</label>
-
+                <label class="form-label">Kategori Informasi</label>
                 <select name="id_kategori" class="form-control">
-
                     @foreach ($kategori as $k)
-                        <option value="{{ $k->id_kategori }}" {{ $data->id_kategori == $k->id_kategori ? 'selected' : '' }}>
-
+                        <option value="{{ $k->id_kategori }}" @if ($data->id_kategori == $k->id_kategori) selected @endif>
                             {{ $k->jenis }}
-
                         </option>
                     @endforeach
-
                 </select>
-
             </div>
 
             <div class="mb-3">
+                <label class="form-label">Isi Informasi</label>
+                <textarea name="body" class="form-control" rows="5">
 
-                <label>Isi Informasi</label>
+{{ $data->body }}
 
-                <textarea id="body" name="body" class="form-control">{!! $data->body !!}</textarea>
-
+</textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Gambar Saat Ini</label>
+                <br>
+                <img src="{{ asset('storage/' . $data->image) }}" width="200">
             </div>
 
             <div class="mb-3">
-
-                <label>Upload Gambar</label>
-
+                <label class="form-label">Ganti Gambar</label>
                 <input type="file" name="image" class="form-control">
-
-                @if ($data->image)
-                    <img src="{{ asset('images/pusat-informasi/' . $data->image) }}" width="120" class="mt-2">
-                @endif
-
             </div>
 
             <button class="btn btn-primary">
                 Update
             </button>
 
+            <a href="{{ route('admin.pusat-informasi.index') }}" class="btn btn-secondary">
+                Kembali
+            </a>
         </form>
-
     </div>
-
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
-
-    <script>
-        ClassicEditor.create(document.querySelector('#body'));
-    </script>
 @endsection

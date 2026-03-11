@@ -74,7 +74,7 @@
                             <div class="mt-3">
                                 <small class="text-muted d-block mb-2">Gambar saat ini:</small>
 
-                                <img src="{{ asset('images/tentang-kami/' . $data->image) }}"
+                                <img src="{{ asset('assets/images/tentang-kami/' . $data->image) }}"
                                     class="img-fluid rounded-3 shadow-sm" style="max-height:200px;">
                             </div>
                         @endif

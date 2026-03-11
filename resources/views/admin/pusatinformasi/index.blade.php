@@ -1,77 +1,51 @@
 @extends('admin.layouts.admin_master')
-
 @section('content')
-    <div class="container py-4">
+    <div class="container">
 
-        <h4 class="mb-4">Pusat Informasi</h4>
-
-        <a href="{{ route('admin.pusat-informasi.create') }}" class="btn btn-primary mb-3">
+        <h3 class="mb-4">Pusat Informasi</h3>
+        <a href="{{ route('admin.pusat-informasi.create') }}" class="btn btn-primary mb-4">
             Tambah Informasi
         </a>
 
-        <table class="table table-bordered">
+        <div class="row">
+            @foreach ($data as $item)
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{{ asset('storage/' . $item->image) }}" class="card-img-top"
+                            style="height:180px; object-fit:cover;">
+                        <div class="card-body">
+                            <span class="badge bg-secondary mb-2">
+                                {{ $item->kategori_informasi->jenis }}
+                            </span>
 
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Kategori</th>
-                    <th>Isi Informasi</th>
-                    <th>Gambar</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-                @foreach ($data as $row)
-                    <tr>
-
-                        <td>{{ $loop->iteration }}</td>
-
-                        <td>{{ $row->kategori_informasi->jenis }}</td>
-
-                        <td>{!! Str::limit($row->body, 100) !!}</td>
-
-                        <td>
-
-                            @if ($row->image)
-                                <img src="{{ asset('images/pusat-informasi/' . $row->image) }}" width="80">
-                            @endif
-
-                        </td>
-
-                        <td>
-
-                            <a href="{{ route('admin.pusat-informasi.show', $row->id_informasi) }}"
-                                class="btn btn-info btn-sm">
-                                Detail
+                            <p class="text-muted small">
+                                {{ $item->created_at->format('d M Y') }}
+                            </p>
+                            <p>
+                                {{ Str::limit($item->body, 100) }}
+                            </p>
+                            <a href="{{ route('admin.pusat-informasi.show', $item->id_informasi) }}">
+                                Read More >>
                             </a>
 
-                            <a href="{{ route('admin.pusat-informasi.edit', $row->id_informasi) }}"
-                                class="btn btn-warning btn-sm">
-                                Edit
-                            </a>
-
-                            <form action="{{ route('admin.pusat-informasi.destroy', $row->id_informasi) }}" method="POST"
-                                style="display:inline">
-
-                                @csrf
-                                @method('DELETE')
-
-                                <button class="btn btn-danger btn-sm">
-                                    Delete
-                                </button>
-
-                            </form>
-
-                        </td>
-
-                    </tr>
-                @endforeach
-
-            </tbody>
-
-        </table>
-
+                            <div class="mt-3">
+                                <a href="{{ route('admin.pusat-informasi.edit', $item->id_informasi) }}"
+                                    class="btn btn-warning btn-sm">
+                                    Edit
+                                </a>
+                                <form action="{{ route('admin.pusat-informasi.destroy', $item->id_informasi) }}" method="POST"
+                                    style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 @endsection

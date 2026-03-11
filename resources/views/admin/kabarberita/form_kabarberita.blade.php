@@ -16,7 +16,7 @@
                         <h6 class="text-lg mb-0">Add New Kabar Berita</h6>
                     </div>
                     <div class="card-body p-4">
-                        <form action="{{ route('admin.kabarberita.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.kabar-berita.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             {{-- JUDUL --}}
@@ -50,9 +50,7 @@
                             <button type="submit" class="btn btn-primary rounded-3 shadow-sm mt-2">
                                 Submit
                             </button>
-
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -61,47 +59,33 @@
             <div class="col-lg-4">
 
                 <div class="card shadow-sm rounded-4">
-
                     <div class="card-header border-bottom">
                         <h6 class="text-lg mb-0">Latest Posts</h6>
                     </div>
 
                     <div class="card-body p-3">
-
                         @forelse(($latestPosts ?? collect())->take(3) as $post)
                             <div class="latest-post-item">
-
                                 <img src="{{ asset('assets/images/kabarberita/' . $post->image) }}"
                                     class="latest-post-thumb">
 
                                 <div>
-
-                                    <a href="{{ route('admin.kabarberita.show', $post->id_kabar_berita) }}"
+                                    <a href="{{ route('admin.kabar-berita.show', $post->id_kabar_berita) }}"
                                         class="text-dark text-decoration-none">
-
                                         <div class="latest-post-title">
                                             {{ $post->judul }}
                                         </div>
-
                                     </a>
-
                                     <div class="latest-post-desc">
                                         {{ Str::limit(strip_tags($post->body_berita), 70) }}
                                     </div>
-
                                 </div>
-
                             </div>
-
                         @empty
-
                             <p class="text-muted">Belum ada berita</p>
                         @endforelse
-
                     </div>
-
                 </div>
-
             </div>
         </div>
         <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>

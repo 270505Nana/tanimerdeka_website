@@ -5,16 +5,11 @@
 @section('content')
 
     <div class="dashboard-main-body">
-
         <h5 class="mb-4 fw-bold">Kabar Berita</h5>
-
         <div class="row g-4">
-
             @foreach ($posts as $post)
                 <div class="col-lg-4 col-md-6">
-
                     <div class="card border-0 shadow-sm h-100 news-card">
-
                         @if ($post->image)
                             <img src="{{ asset('assets/images/kabarberita/' . $post->image) }}" class="card-img-top"
                                 style="height:180px; object-fit:cover;">
@@ -34,18 +29,18 @@
                             </p>
 
                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                <a href="{{ route('admin.kabarberita.show', $post->id_kabar_berita) }}"
+                                <a href="{{ route('admin.kabar-berita.show', $post->id_kabar_berita) }}"
                                     class="text-primary fw-semibold text-decoration-none">
                                     Read More »
                                 </a>
 
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('admin.kabarberita.edit', $post->id_kabar_berita) }}"
+                                    <a href="{{ route('admin.kabar-berita.edit', $post->id_kabar_berita) }}"
                                         class="action-btn text-primary">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
 
-                                    <form action="{{ route('admin.kabarberita.destroy', $post->id_kabar_berita) }}"
+                                    <form action="{{ route('admin.kabar-berita.destroy', $post->id_kabar_berita) }}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -53,26 +48,17 @@
                                         <button type="submit" class="action-btn text-danger border-0 bg-transparent">
                                             <i class="bi bi-trash-fill"></i>
                                         </button>
-
                                     </form>
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
             @endforeach
-
         </div>
-
         <div class="mt-4">
             {{ $posts->links() }}
         </div>
-
     </div>
 
 @endsection
