@@ -8,6 +8,7 @@
 
     <!-- 1. FAVICON -->
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}" sizes="16x16">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <!-- 2. CSS UTAMA -->
     <link rel="stylesheet" href="{{ asset('assets/css/remixicon.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/lib/bootstrap.min.css') }}">
@@ -15,20 +16,21 @@
     <!-- 3. CSS UNTUK CHART -->
     <link rel="stylesheet" href="{{ asset('assets/css/lib/apexcharts.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/lib/dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 </head>
 
 <body>
     <div class="dashboard-wrapper d-flex">
-        @include('admin.components_admin.sidebar')
+        @include('admin.components.sidebar')
 
         <main class="dashboard-main w-100">
-            @include('admin.components_admin.header')
+            @include('admin.components.header')
 
             <div class="dashboard-main-body">
                 @yield('content')
             </div>
 
-            @include('admin.components_admin.footer')
+            @include('admin.components.footer')
         </main>
     </div>
 
@@ -49,4 +51,5 @@
     <script src="{{ asset('assets/js/homeOneChart.js') }}"></script>
 
 </body>
+
 </html>
