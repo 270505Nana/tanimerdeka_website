@@ -10,11 +10,10 @@ return new class extends Migration
     {
         Schema::create('tentang_kami', function (Blueprint $table) {
             $table->id('id_tentang_kami');
-            $table->foreignId('id_organisasi')->constrained('struktur_organisasi','id_organisasi')->cascadeOnDelete();
-            $table->string('deskripsi_program',255);
-            $table->string('visi',50);
-            $table->string('misi',50);
-            $table->text('image',50);
+            $table->string('deskripsi_program');
+            $table->string('visi');
+            $table->string('misi');
+            $table->text('image');
             $table->timestamps();
         });
     }
