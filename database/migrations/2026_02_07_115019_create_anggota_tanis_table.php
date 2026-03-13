@@ -21,6 +21,7 @@ return new class extends Migration
             ->constrained('indonesia_villages')
             ->onUpdate('cascade')
             ->onDelete('restrict');    
+        
         $table->text('alamat_detail',50)->nullable();
         
         $table->foreignId('id_kelompok_tani')
