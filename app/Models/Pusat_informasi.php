@@ -10,9 +10,9 @@ class Pusat_informasi extends Model
     use HasFactory;
     protected $table = 'pusat_informasi';
     protected $primaryKey = 'id_informasi';
-    protected $fillable = ['body','image'];
+    protected $fillable = ['id_kategori','body','image'];
 
     public function kategori_informasi(){
-        return $this->belongsTo(Kategori_informasi::class,'kategori_informasi','id_kategori');
+        return $this->belongsTo(Kategori_informasi::class,'id_kategori','id_kategori');
     }
 }

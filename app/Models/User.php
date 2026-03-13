@@ -19,7 +19,7 @@ class User extends Authenticatable
         'jenis_kelamin',
         'email',
         'no_hp',
-        'indonesia_village_id', 
+        'indonesia_village_id',
         'alamat_detail',
         'password',
         'role',
@@ -50,11 +50,24 @@ class User extends Authenticatable
    public function ProductSave()
     {
         return $this->belongsToMany(
-            Usaha_anggota::class, 
-            'simpan_usaha', 
+            Usaha_anggota::class,
+            'simpan_usaha',
             // fk di table simpan usaha
-            'id_user',    
-            'id_usaha'   
+            'id_user',
+            'id_usaha'
         );
     }
+
+   public function followingTani()
+    {
+        return $this->belongsToMany(
+            AnggotaTani::class,
+            'follower',
+            'follow_from',
+            'follow_to',
+            'id_user',
+            'id_anggota'
+    );
+}
+
 }
