@@ -10,6 +10,7 @@ use App\Http\Controllers\KabarBeritaController;
 use App\Http\Controllers\PusatInformasiController;
 
 Route::middleware('guest')->group(function () {
+    Route::get('/',[AuthController::class,'Beranda'])->name('beranda');
     Route::get('/login', [AuthController::class, 'LoginPage'])->name('login');
     Route::post('/login', [AuthController::class, 'LoginProcess']);
     Route::get('/daftar/anggota', [AuthController::class, 'RegisterPage'])->name('daftar.anggota');
@@ -32,24 +33,11 @@ Route::middleware(['auth', CheckRole::class.':admin'])->group(function () {
     });
 });
 
-/*
-|--------------------------------------------------------------------------
-| ADMIN
-|--------------------------------------------------------------------------
-*/
-
 Route::prefix('admin')->name('admin.')->group(function () {
 
     // Dashboard
     Route::get('/dashboard', [AdminController::class, 'dashboard'])
         ->name('dashboard');
-
-
-    /*
-    |---------------------------------
-    | Tentang Kami
-    |---------------------------------
-    */
 
     Route::get('/tentang-kami', [TentangKamiController::class, 'index'])
         ->name('tentang-kami.index');
@@ -57,22 +45,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/tentang-kami', [TentangKamiController::class, 'store'])
         ->name('tentang-kami.store');
 
-
-    /*
-    |---------------------------------
-    | Pusat Informasi
-    |---------------------------------
-    */
-
     Route::get('/pusat-informasi', [PusatInformasiController::class, 'index'])
         ->name('pusat-informasi.index');
-
-
-    /*
-    |---------------------------------
-    | Kabar Berita CRUD
-    |---------------------------------
-    */
 
     Route::get('/kabarberita', [KabarBeritaController::class,'index'])->name('kabarberita.index');
 

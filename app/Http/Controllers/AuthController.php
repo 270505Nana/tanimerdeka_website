@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
-
 class AuthController extends Controller
 {
+
+    public function Beranda(){
+        return view ('pages.dashboard');
+    }
 
     public function RegisterPage(){
 
@@ -63,7 +66,7 @@ class AuthController extends Controller
     }
     public function LoginPage()
     {
-        return view ('login');
+        return view ('pages.login');
     }
 
     public function LoginProcess(LoginRequest $request)
