@@ -32,11 +32,11 @@ class KelompokTaniController extends Controller
         $pathFileSK = $request->file('sk')->store('sk','public');
         $desa = Village::where('code', $request->indonesia_village_id)->first();
 
-        // send to db
+        // create data then send it into db
         Kelompok_tani::create([
             'nama_kelompok' => $request->nama_kelompok,
             'nomor_sk' => $request->nomor_sk,
-            'indonesia_village_id' => $request->indonesia_village_id,
+            'indonesia_village_id' => $desa->id,
             'alamat_detail' => $request->alamat_detail,
             'sk' => $pathFileSK,
         ]);

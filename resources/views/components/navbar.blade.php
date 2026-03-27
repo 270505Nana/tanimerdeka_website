@@ -9,13 +9,13 @@
         <a href="/" class="text-white bg-white/20 border border-white/30 px-5 lg:px-7 py-2 rounded-full font-medium transition shadow-sm">
             Beranda
         </a>
-        <a href="#" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
+        <a href="/" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
             Pasar Tani
         </a>
-        <a href="#" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
+        <a href="/" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
             Kabar Berita
         </a>   
-        <a href="#" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
+        <a href="/" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
             Tentang kami
         </a>
     </div>

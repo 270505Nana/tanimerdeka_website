@@ -64,7 +64,7 @@
                     Masuk
                 </button>
 
-                <a href="/daftar" class="block w-full text-center border-2 border-[#2d4a22] text-[#2d4a22] font-bold py-3 rounded-full hover:bg-green-50 transition-all active:scale-95">
+                <a href="/daftar/anggota" class="block w-full text-center border-2 border-[#2d4a22] text-[#2d4a22] font-bold py-3 rounded-full hover:bg-green-50 transition-all active:scale-95">
                     Daftar
                 </a>
             </div>

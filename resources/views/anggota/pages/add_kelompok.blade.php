@@ -15,16 +15,17 @@
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col items-center pt-10 pb-10 px-4">
 
-    <div class="mb-8 flex items-center gap-2">
-        <img src="{{ asset('images/logo-tani-merdeka.png') }}" alt="Logo" class="h-16">
-        <span class="font-bold text-xl">Tani merdeka</span>
+    <!-- logo -->   
+    <div class="absolute top-6 left-6 z-20">
+        <img src="{{ asset('assets/images/tanimerdeka-logo.png') }}" class="h-12 md:h-16 w-auto" alt="Logo">
     </div>
+
 
     <div class="w-full max-w-2xl bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
         <h1 class="text-2xl font-bold mb-2 text-center text-gray-800">Daftarkan Kelompok Tani Baru</h1>
         <p class="text-gray-500 mb-8 text-center text-sm">Silahkan lengkapi data kelompok tani di bawah ini. Data akan diverifikasi admin maksimal 2x24 jam.</p>
 
-        <form action="{{ route('register.tambah-kelompok.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <form action="{{ route('daftar.anggota.tambah-kelompok.process') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
 
             @if ($errors->any())
@@ -83,7 +84,7 @@
                     Kirim Pengajuan
                 </button>
                 <div class="text-center mt-4">
-                    <a href="{{ route('register.anggota') }}" class="text-sm text-gray-500 hover:underline">Kembali ke pendaftaran anggota</a>
+                    <a href="{{ route('daftar.anggota') }}" class="text-sm text-gray-500 hover:underline">Kembali ke pendaftaran anggota</a>
                 </div>
             </div>
         </form>

@@ -13,7 +13,7 @@ return new class extends Migration
         $table->string('nama_lengkap'); 
         $table->bigInteger('nik')->unique();
         $table->string('jenis_kelamin', 15);
-        $table->string('email')->unique(); 
+        $table->string('email')->unique()->nullable(); 
         $table->string('no_hp'); 
 
         $table->foreignId('indonesia_village_id')
