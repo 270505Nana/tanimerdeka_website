@@ -77,7 +77,7 @@
 
     {{-- BAGIAN GRAFIK DAN TABEL --}}
     <div class="row gy-4 mt-1">
-       <div class="row g-4">
+        <div class="row g-4">
 
     {{-- Sales Statistic Chart --}}
     <div class="col-xxl-8 col-xl-12">

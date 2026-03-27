@@ -120,19 +120,17 @@
                                 <span class="text-sm text-secondary-light flex-shrink-0">23 Mins ago</span>
                             </a>
                         </div>
-
                         <div class="text-center py-12 px-16">
                             <a href="javascript:void(0)" class="text-primary-600 fw-semibold text-md">See All
                                 Notification</a>
                         </div>
-
                     </div>
                 </div><!-- Notification dropdown end -->
 
                 <div class="dropdown">
                     <button class="d-flex justify-content-center align-items-center rounded-circle" type="button"
                         data-bs-toggle="dropdown">
-                        <img src="{{ asset('assets/images/user.png') }}" alt="image"
+                        <img src="{{ asset('assets/images/user.png') }}" alt="user-avatar"
                             class="w-40-px h-40-px object-fit-cover rounded-circle">
                     </button>
                     <div class="dropdown-menu to-top dropdown-menu-sm">

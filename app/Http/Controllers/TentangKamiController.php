@@ -58,6 +58,6 @@ class TentangKamiController extends Controller
     public function show()
     {
         $data = Tentang_kami::find(1);
-        return view('tentang_kami_user', compact('data'));
+        return view('pages.tentangkami', compact('data'));
     }
 }
