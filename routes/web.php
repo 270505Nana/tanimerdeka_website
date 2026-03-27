@@ -36,19 +36,22 @@ Route::middleware(['auth', CheckRole::class.':admin'])->group(function () {
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
-
     // Dashboard
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami.index');
     Route::post('/tentang-kami', [TentangKamiController::class, 'store'])->name('tentang-kami.store');
+// Pusat Informasi
     Route::get('/pusat-informasi', [PusatInformasiController::class, 'index'])->name('pusat-informasi.index');
-
+    Route::get('/pusat-informasi/create', [PusatInformasiController::class, 'create'])->name('pusat-informasi.create');
+    Route::post('/pusat-informasi', [PusatInformasiController::class, 'store'])->name('pusat-informasi.store');
+    Route::get('/pusat-informasi/{id}', [PusatInformasiController::class, 'show'])->name('pusat-informasi.show');
+    Route::get('/pusat-informasi/{id}/edit', [PusatInformasiController::class, 'edit'])->name('pusat-informasi.edit');
+    Route::put('/pusat-informasi/{id}', [PusatInformasiController::class, 'update'])->name('pusat-informasi.update');
+    Route::delete('/pusat-informasi/{id}', [PusatInformasiController::class, 'destroy'])->name('pusat-informasi.destroy');
+//Tentang Kami
     Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami.index');
-
     Route::post('/tentang-kami', [TentangKamiController::class, 'store'])->name('tentang-kami.store');
-
-    Route::get('/pusat-informasi', [PusatInformasiController::class, 'index'])->name('pusat-informasi.index');
-
+//Kabar Berita
     Route::get('/kabarberita', [KabarBeritaController::class,'index'])->name('kabarberita.index');
     Route::get('/kabarberita/create', [KabarBeritaController::class,'create'])->name('kabarberita.create');
     Route::post('/kabarberita', [KabarBeritaController::class,'store'])->name('kabarberita.store');
