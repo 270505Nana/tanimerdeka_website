@@ -19,6 +19,7 @@ class Kelompok_tani extends Model
         'indonesia_village_id', 
         'alamat_detail',  
         'sk',
+        'status',
     ];
 
     public function desa()

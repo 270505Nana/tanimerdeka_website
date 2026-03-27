@@ -223,7 +223,7 @@
             jalurDipilih = jalur;
             document.getElementById('input_status_kelompok').value=jalur;
 
-            // take button id above
+            // take button id frm above
             const btnBelum = document.getElementById('btn-belum');
             const btnSudah = document.getElementById('btn-sudah');
             const teksPilihan = document.getElementById('teks-pilihan');
@@ -232,6 +232,7 @@
             // reset styling
             btnBelum.className = btnSudah.className = "px-6 py-2 rounded-full border-2 border-gray-300 text-gray-500 font-semibold transition-all";
 
+            //biar muncul di tampilan registernya.
             if (jalur === 'belum'){
                 btnBelum.className = "px-6 py-2 rounded-full border-2 border-tani bg-tani text-white font-semibold transition-all";
                 teksPilihan.innerHTML = 'Anda memilih jalur "Belum memiliki kelompok tani"';
@@ -418,7 +419,6 @@
                         }).then((res) => {
                             if(res.isConfirmed){
                                 //user menambahkan kelompok baru, redirect ke route tambah kelompok
-                                // nnti routenya masukin disini
                                 window.location.href = "{{route('daftar.anggota.tambah-kelompok') }}";
                             }
                         });

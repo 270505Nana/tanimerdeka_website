@@ -35,7 +35,7 @@ class AuthController extends Controller
             'nama_lengkap' => 'required|string|max:50',
             'nik' => 'required|numeric|unique:anggota_tani,nik',
             'jenis_kelamin' => 'required',
-            'email' => 'required|email|unique:anggota_tani,email',
+            'email' => 'nullable|email|unique:anggota_tani,email',
             'no_hp' => 'required|numeric',
             'indonesia_village_id' => 'required',
             'alamat_detail' => 'nullable|string|max:250',
@@ -61,7 +61,7 @@ class AuthController extends Controller
             'role' => 'anggota'  
         ]);
 
-        return redirect()-> route('login')-> with('success','Pendaftaran Anda berhasil! Silahkan login dengan No HP dan password anda.');
+        return redirect()-> route('beranda')-> with('success','Pendaftaran Anda berhasil!');
 
     }
     public function LoginPage()

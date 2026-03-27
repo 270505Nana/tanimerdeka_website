@@ -36,29 +36,15 @@ Route::middleware(['auth', CheckRole::class.':admin'])->group(function () {
 Route::prefix('admin')->name('admin.')->group(function () {
 
     // Dashboard
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])
-        ->name('dashboard');
-
-    Route::get('/tentang-kami', [TentangKamiController::class, 'index'])
-        ->name('tentang-kami.index');
-
-    Route::post('/tentang-kami', [TentangKamiController::class, 'store'])
-        ->name('tentang-kami.store');
-
-    Route::get('/pusat-informasi', [PusatInformasiController::class, 'index'])
-        ->name('pusat-informasi.index');
-
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami.index');
+    Route::post('/tentang-kami', [TentangKamiController::class, 'store'])->name('tentang-kami.store');
+    Route::get('/pusat-informasi', [PusatInformasiController::class, 'index'])->name('pusat-informasi.index');
     Route::get('/kabarberita', [KabarBeritaController::class,'index'])->name('kabarberita.index');
-
     Route::get('/kabarberita/create', [KabarBeritaController::class,'create'])->name('kabarberita.create');
-
     Route::post('/kabarberita', [KabarBeritaController::class,'store'])->name('kabarberita.store');
-
     Route::get('/kabarberita/{id}', [KabarBeritaController::class,'show'])->name('kabarberita.show');
-
     Route::get('/kabarberita/{id}/edit', [KabarBeritaController::class,'edit'])->name('kabarberita.edit');
-
     Route::put('/kabarberita/{id}', [KabarBeritaController::class,'update'])->name('kabarberita.update');
-
     Route::delete('/kabarberita/{id}', [KabarBeritaController::class,'destroy'])->name('kabarberita.destroy');
 });
