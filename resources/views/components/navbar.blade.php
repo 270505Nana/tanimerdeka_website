@@ -6,20 +6,15 @@
     </div>
 
     <div class="hidden md:flex items-center bg-[#47703e] rounded-full px-2 py-2 shadow-md">
-        <a href="/"
-            class="text-white px-5 lg:px-7 py-2 rounded-full font-medium transition
-        {{ request()->is('/') ? 'bg-white/20 border border-white/30 shadow-sm' : 'hover:bg-white/10' }}">
-            Beranda
-        </a>
-        <a href="/" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
+        <a href="{{ route('beranda') }}" class="text-white bg-white/20 border border-white/30 px-5 lg:px-7 py-2 rounded-full font-medium transition shadow-sm">
+     
+        <a href="{{ route('beranda') }}" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
             Pasar Tani
         </a>
-        <a href="/" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
+        <a href="{{ route('kabar-berita.index') }}" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
             Kabar Berita
-        </a>
-        <a href="/tentang-kami"
-            class="text-white px-5 lg:px-7 py-2 rounded-full font-medium transition
-        {{ request()->is('tentang-kami') ? 'bg-white/20 border border-white/30 shadow-sm' : 'hover:bg-white/10' }}">
+        </a>   
+        <a href="{{ route('tentang-kami') }}" class="text-white hover:bg-white/10 px-5 lg:px-7 py-2 rounded-full font-medium transition">
             Tentang kami
         </a>
     </div>

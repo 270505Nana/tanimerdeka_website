@@ -1,0 +1,221 @@
+/* public/css/kabar-berita.css */
+
+/* Global Container dengan Padding Kanan-Kiri yang Lega */
+.kb-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 6%;
+    font-family: inherit;
+}
+
+/* =========================================
+   1. HERO & BERITA POPULER (Kiri & Kanan)
+========================================= */
+.kb-top-section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Proporsi Kiri 60% : Kanan 40% */
+    gap: 30px;
+    margin-bottom: 50px;
+    align-items: stretch; /* Memaksa tinggi sejajar */
+}
+
+/* Hero Image */
+.kb-hero-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 400px; /* Tinggi dikunci agar tidak raksasa */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.kb-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.kb-hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 60px 30px 25px 30px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.kb-hero-title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Berita Populer */
+.kb-populer-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.kb-section-title-small {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 20px 0;
+}
+.kb-populer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.kb-populer-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    background: #ffffff;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.kb-populer-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transform: translateY(-2px);
+}
+.kb-populer-img {
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.kb-populer-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.kb-populer-date {
+    font-size: 0.65rem;
+    color: #999;
+    align-self: flex-end;
+    margin-bottom: 4px;
+}
+.kb-populer-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* =========================================
+   2. HEADER UNTUK SECTION TENGAH & BAWAH
+========================================= */
+.kb-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    padding-top: 30px;
+    border-top: 1px solid #f0f0f0; /* Garis pemisah tipis */
+}
+.kb-section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+}
+.kb-read-more {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #47703e; /* Hijau Tani Merdeka */
+    text-decoration: underline;
+}
+
+/* =========================================
+   3. BERITA TERKINI (Grid 4 Kolom)
+========================================= */
+.kb-terkini-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+.kb-terkini-card {
+    display: flex;
+    flex-direction: column;
+}
+.kb-terkini-img {
+    width: 100%;
+    height: 160px; /* Dikecilkan agar rapi */
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
+.kb-terkini-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 6px 0;
+    line-height: 1.4;
+}
+.kb-desc {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* =========================================
+   4. PUSAT INFORMASI (Grid 3 Kolom)
+========================================= */
+.kb-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+.kb-info-card {
+    background-color: #fafafa;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+.kb-badge {
+    align-self: flex-start;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #444;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+.kb-info-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 10px 0;
+}
+.kb-info-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #47703e;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+/* =========================================
+   5. RESPONSIVE DESIGN (HP & Tablet)
+========================================= */
+@media (max-width: 992px) {
+    .kb-top-section { grid-template-columns: 1fr; }
+    .kb-hero-card { height: 350px; }
+    .kb-terkini-grid { grid-template-columns: repeat(2, 1fr); }
+    .kb-info-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 576px) {
+    .kb-container { padding: 30px 5%; }
+    .kb-terkini-grid, .kb-info-grid { grid-template-columns: 1fr; }
+    .kb-hero-title { font-size: 1.4rem; }
+}
