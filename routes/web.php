@@ -17,6 +17,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/daftar/anggota', [AuthController::class, 'RegisterProcess'])->name('daftar.anggota.process');
     Route::get('/daftar/anggota/tambah-kelompok', [KelompokTaniController::class, 'AddKelompok'])->name('daftar.anggota.tambah-kelompok');
     Route::post('/daftar/anggota/tambah-kelompok', [KelompokTaniController::class, 'AddKelompokProcess'])->name('daftar.anggota.tambah-kelompok.process');
+    Route::get('/kabar-berita', [KabarBeritaController::class, 'index'])->name('kabar-berita.index');
+    Route::get('/kabar-berita/{id}', [KabarBeritaController::class, 'show'])->name('kabar-berita.show');
 });
 
 Route::middleware(['auth', CheckRole::class.':anggota,user'])->group(function () {
