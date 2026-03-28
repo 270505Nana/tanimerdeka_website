@@ -1,6 +1,4 @@
-/* public/css/kabar-berita.css */
 
-/* Global Container dengan Padding Kanan-Kiri yang Lega */
 .kb-container {
     max-width: 1300px;
     margin: 0 auto;
@@ -8,15 +6,12 @@
     font-family: inherit;
 }
 
-/* =========================================
-   1. HERO & BERITA POPULER (Kiri & Kanan)
-========================================= */
 .kb-top-section {
     display: grid;
-    grid-template-columns: 1.5fr 1fr; /* Proporsi Kiri 60% : Kanan 40% */
+    grid-template-columns: 1.5fr 1fr;
     gap: 30px;
     margin-bottom: 50px;
-    align-items: stretch; /* Memaksa tinggi sejajar */
+    align-items: stretch; 
 }
 
 /* Hero Image */
@@ -24,7 +19,7 @@
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    height: 400px; /* Tinggi dikunci agar tidak raksasa */
+    height: 400px; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 .kb-hero-img {
@@ -106,16 +101,13 @@
     line-height: 1.3;
 }
 
-/* =========================================
-   2. HEADER UNTUK SECTION TENGAH & BAWAH
-========================================= */
 .kb-section-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 20px;
     padding-top: 30px;
-    border-top: 1px solid #f0f0f0; /* Garis pemisah tipis */
+    border-top: 1px solid #f0f0f0;
 }
 .kb-section-title {
     font-size: 1.3rem;
@@ -126,12 +118,12 @@
 .kb-read-more {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #47703e; /* Hijau Tani Merdeka */
+    color: #47703e; 
     text-decoration: underline;
 }
 
 /* =========================================
-   3. BERITA TERKINI (Grid 4 Kolom)
+   BERITA TERKINI 
 ========================================= */
 .kb-terkini-grid {
     display: grid;
@@ -145,7 +137,7 @@
 }
 .kb-terkini-img {
     width: 100%;
-    height: 160px; /* Dikecilkan agar rapi */
+    height: 160px; 
     border-radius: 12px;
     object-fit: cover;
     margin-bottom: 12px;
@@ -165,7 +157,7 @@
 }
 
 /* =========================================
-   4. PUSAT INFORMASI (Grid 3 Kolom)
+   PUSAT INFORMASI 
 ========================================= */
 .kb-info-grid {
     display: grid;
@@ -205,9 +197,7 @@
     margin-top: 15px;
 }
 
-/* =========================================
-   5. RESPONSIVE DESIGN (HP & Tablet)
-========================================= */
+
 @media (max-width: 992px) {
     .kb-top-section { grid-template-columns: 1fr; }
     .kb-hero-card { height: 350px; }
