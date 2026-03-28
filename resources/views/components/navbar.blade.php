@@ -1,7 +1,7 @@
 <!-- <nav class="w-full bg-white py-4 px-6 md:px-10 lg:px-16 flex justify-between items-center shadow-sm relative z-50"> -->
-<nav class="w-full bg-white py-4 px-6 md:px-10 lg:px-16 flex justify-between items-center shadow-sm sticky top-0 z-50">    
+<nav class="w-full bg-white py-4 px-6 md:px-10 lg:px-16 flex justify-between items-center shadow-sm sticky top-0 z-50">
+
     <div class="flex items-center">
-        <!-- asset() memanggil gambar dari folder public/assets/... -->
         <img src="{{ asset('assets/images/tanimerdeka-logo.png') }}" class="h-10 md:h-14" alt="Logo Tani Merdeka">
     </div>
 
@@ -34,7 +34,8 @@
 
             <!-- profil icon -->
             <div class="relative">
-                <button id="profile-btn" class="text-[#47703e] hover:text-green-900 transition flex items-center focus:outline-none">
+                <button id="profile-btn"
+                    class="text-[#47703e] hover:text-green-900 transition flex items-center focus:outline-none">
                     <i class="bi bi-person-circle text-[32px]"></i>
                 </button>
                 
@@ -43,7 +44,8 @@
                     
                     <form action="{{ route('logout') }}" method="POST" class="block">
                         @csrf
-                        <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">Logout</button>
+                        <button type="submit"
+                            class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">Logout</button>
                     </form>
                 </div>
             </div>
@@ -51,7 +53,8 @@
 
         <!-- if guest then need login first -->
         @guest
-            <a href="/login" class="bg-[#47703e] text-white px-6 py-2.5 rounded-full font-bold hover:bg-green-800 transition shadow-md">Login</a>
+            <a href="/login"
+                class="bg-[#47703e] text-white px-6 py-2.5 rounded-full font-bold hover:bg-green-800 transition shadow-md">Login</a>
         @endguest
     </div>
 
@@ -63,7 +66,7 @@
                 <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
             </a>
         @endauth
-        
+
         <button id="hamburger-btn" class="text-[#47703e] focus:outline-none mt-1">
             <i class="bi bi-list text-4xl"></i>
         </button>
@@ -84,13 +87,16 @@
                 <a href="#" class="hover:bg-white/10 rounded-full py-2 transition border border-transparent">Profil Saya</a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="w-full text-center text-red-300 hover:text-red-100 py-2 font-bold">Logout</button>
+                    <button type="submit"
+                        class="w-full text-center text-red-300 hover:text-red-100 py-2 font-bold">Logout</button>
                 </form>
             @endauth
 
             @guest
                 <hr class="border-white/20 my-2">
-                <a href="/login" class="bg-white text-[#47703e] py-3 rounded-full font-bold hover:bg-gray-100 w-full text-center inline-block">Login Akun</a>
+                <a href="/login"
+                    class="bg-white text-[#47703e] py-3 rounded-full font-bold hover:bg-gray-100 w-full text-center inline-block">Login
+                    Akun</a>
             @endguest
         </div>
     </div>

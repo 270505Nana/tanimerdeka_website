@@ -21,7 +21,7 @@
 
                     {{-- DESKRIPSI PROGRAM --}}
                     <div class="mb-4">
-                        <label class="form-label fw-semibold">Deskripsi Program</label>
+                        <label for="deskripsi_program" class="form-label fw-semibold">Deskripsi Program</label>
 
                         <textarea id="deskripsi_program" name="deskripsi_program"
                             class="form-control rounded-3 @error('deskripsi_program') is-invalid @enderror" rows="6">{{ old('deskripsi_program', $data->deskripsi_program ?? '') }}</textarea>
@@ -35,7 +35,7 @@
 
                     {{-- VISI --}}
                     <div class="mb-4">
-                        <label class="form-label fw-semibold">Visi</label>
+                        <label for="visi" class="form-label fw-semibold">Visi</label>
 
                         <textarea id="visi" name="visi" class="form-control rounded-3 @error('visi') is-invalid @enderror"
                             rows="6">{{ old('visi', $data->visi ?? '') }}</textarea>
@@ -49,7 +49,7 @@
 
                     {{-- MISI --}}
                     <div class="mb-4">
-                        <label class="form-label fw-semibold">Misi</label>
+                        <label for="misi" class="form-label fw-semibold">Misi</label>
 
                         <textarea id="misi" name="misi" class="form-control rounded-3 @error('misi') is-invalid @enderror"
                             rows="6">{{ old('misi', $data->misi ?? '') }}</textarea>
@@ -63,19 +63,19 @@
 
                     {{-- IMAGE --}}
                     <div class="mb-4">
-                        <label class="form-label fw-semibold">
+                        <label for="image" class="form-label fw-semibold">
                             Upload Logo / Gambar
                             <span class="text-muted small">(Maks: 10MB, JPG/PNG)</span>
                         </label>
 
-                        <input type="file" name="image" class="form-control rounded-3" accept="image/png, image/jpeg">
+                        <input type="file" id="image" name="image" class="form-control rounded-3" accept="image/png, image/jpeg">
 
                         @if (isset($data->image))
                             <div class="mt-3">
                                 <small class="text-muted d-block mb-2">Gambar saat ini:</small>
 
                                 <img src="{{ asset('images/tentang-kami/' . $data->image) }}"
-                                    class="img-fluid rounded-3 shadow-sm" style="max-height:200px;">
+                                    alt="Gambar Tentang Kami" class="img-fluid rounded-3 shadow-sm" style="max-height:200px;">
                             </div>
                         @endif
                     </div>

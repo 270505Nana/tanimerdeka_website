@@ -7,18 +7,18 @@ use Illuminate\Http\Request;
 
 class KabarBeritaController extends Controller
 {
-    /*
-     * =====================================
-     * LIST BERITA
-     * =====================================
-     */
+
     public function index()
     {
         $posts = Kabar_berita::latest()->paginate(10);
 
-        return view('admin.kabarberita.index', compact('posts'));
-    }
+        $view = auth()->check() && auth()->user()->role === 'admin'
+        ? 'admin.kabarberita.index'
+        : 'pages.kabar_berita';
 
+        return view($view, compact('posts'));       
+    }
+    
     /*
      * =====================================
      * FORM CREATE
@@ -31,11 +31,6 @@ class KabarBeritaController extends Controller
         return view('admin.kabarberita.form_kabarberita', compact('latestPosts'));
     }
 
-    /*
-     * =====================================
-     * SIMPAN DATA
-     * =====================================
-     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -61,35 +56,23 @@ class KabarBeritaController extends Controller
             ->with('success', 'Berita berhasil ditambahkan');
     }
 
-    /*
-     * =====================================
-     * DETAIL BERITA
-     * =====================================
-     */
     public function show($id)
     {
         $berita = Kabar_berita::findOrFail($id);
+        
+        $view = auth()->check() && auth()->user()->role === 'admin'
+        ? 'admin.kabarberita.show'
+        : 'pages.kabar_berita_detail';
 
-        return view('admin.kabarberita.show', compact('berita'));
+        return view($view, compact('berita'));
     }
 
-    /*
-     * =====================================
-     * FORM EDIT
-     * =====================================
-     */
     public function edit($id)
     {
         $berita = Kabar_berita::findOrFail($id);
 
         return view('admin.kabarberita.edit', compact('berita'));
     }
-
-    /*
-     * =====================================
-     * UPDATE DATA
-     * =====================================
-     */
 
     public function update(Request $request, $id)
     {
@@ -118,11 +101,6 @@ class KabarBeritaController extends Controller
             ->with('success', 'Berita berhasil diupdate');
     }
 
-    /*
-     * =====================================
-     * DELETE BERITA
-     * =====================================
-     */
     public function destroy($id)
     {
         $berita = Kabar_berita::findOrFail($id);
