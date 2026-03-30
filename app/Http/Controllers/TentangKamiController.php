@@ -12,7 +12,7 @@ class TentangKamiController extends Controller
         $data = Tentang_kami::find(1);
         $view = auth()->check() && auth()->user()->role === 'admin'
         ? 'admin.tentangkami.form_tentangkami'
-        : 'pages.tentang_kami';
+        : 'pages.tentangkami';
 
         return view($view, compact('data'));
     }
