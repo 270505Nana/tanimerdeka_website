@@ -10,7 +10,11 @@ class TentangKamiController extends Controller
     public function index()
     {
         $data = Tentang_kami::find(1);
-        return view('admin.tentangkami.form_tentangkami', compact('data'));
+        $view = auth()->check() && auth()->user()->role === 'admin'
+        ? 'admin.tentangkami.form_tentangkami'
+        : 'pages.tentang_kami';
+
+        return view($view, compact('data'));
     }
 
     public function store(Request $request)
@@ -53,11 +57,5 @@ class TentangKamiController extends Controller
         return redirect()
             ->route('admin.tentang-kami.index')
             ->with('success', 'Data berhasil diperbarui!');
-    }
-
-    public function show()
-    {
-        $data = Tentang_kami::find(1);
-        return view('pages.tentangkami', compact('data'));
     }
 }
