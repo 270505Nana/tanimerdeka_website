@@ -11,7 +11,7 @@
             Beranda
         </a>
 
-        <a href="{{route('pasar.tani')}}" class="text-white px-5 lg:px-7 py-2 rounded-full font-medium transition {{ request()->is('pasar-tani*') ? 'bg-white/20 border border-white/30 shadow-sm' : 'hover:bg-white/10 border border-transparent' }}">
+        <a href="{{route('pasar-tani')}}" class="text-white px-5 lg:px-7 py-2 rounded-full font-medium transition {{ request()->is('pasar-tani*') ? 'bg-white/20 border border-white/30 shadow-sm' : 'hover:bg-white/10 border border-transparent' }}">
             Pasar Tani
         </a>
         
@@ -94,7 +94,7 @@
 
             @guest
                 <hr class="border-white/20 my-2">
-                <a href="/login"
+                <a href="{{route('login')}}"
                     class="bg-white text-[#47703e] py-3 rounded-full font-bold hover:bg-gray-100 w-full text-center inline-block">Login
                     Akun</a>
             @endguest
