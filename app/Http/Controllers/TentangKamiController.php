@@ -16,6 +16,12 @@ class TentangKamiController extends Controller
 
         return view($view, compact('data'));
     }
+    public function show()
+    {
+        $data = Tentang_kami::find(1);
+
+        return view('admin.tentangkami.form_tentangkami', compact('data'));
+    }
 
     public function store(Request $request)
     {

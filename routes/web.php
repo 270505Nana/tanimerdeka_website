@@ -52,7 +52,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/pusat-informasi/{id}', [PusatInformasiController::class, 'update'])->name('pusat-informasi.update');
     Route::delete('/pusat-informasi/{id}', [PusatInformasiController::class, 'destroy'])->name('pusat-informasi.destroy');
 //Tentang Kami
-    Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami.index');
+    Route::get('/tentang-kami', [TentangKamiController::class, 'show'])->name('tentang-kami.index');
     Route::post('/tentang-kami', [TentangKamiController::class, 'store'])->name('tentang-kami.store');
 //Kabar Berita
     Route::get('/kabarberita', [KabarBeritaController::class,'index'])->name('kabarberita.index');
