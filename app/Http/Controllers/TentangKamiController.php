@@ -32,7 +32,7 @@ class TentangKamiController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
-        $data = Tentang_kami::find(1);
+        $data = Tentang_kami::firstOrCreate([]);
 
         // update data
         $data->deskripsi_program = $request->deskripsi_program;
