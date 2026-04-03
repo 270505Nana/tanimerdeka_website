@@ -12,13 +12,16 @@ use App\Http\Controllers\PusatInformasiController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/',[AuthController::class,'Beranda'])->name('beranda');
-    Route::get('/tentang-kami', [TentangKamiController::class, 'show'])->name('tentang-kami');
+    Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
     Route::get('/login', [AuthController::class, 'LoginPage'])->name('login');
     Route::post('/login', [AuthController::class, 'LoginProcess']);
     Route::get('/daftar/anggota', [AuthController::class, 'RegisterPage'])->name('daftar.anggota');
     Route::post('/daftar/anggota', [AuthController::class, 'RegisterProcess'])->name('daftar.anggota.process');
     Route::get('/daftar/anggota/tambah-kelompok', [KelompokTaniController::class, 'AddKelompok'])->name('daftar.anggota.tambah-kelompok');
     Route::post('/daftar/anggota/tambah-kelompok', [KelompokTaniController::class, 'AddKelompokProcess'])->name('daftar.anggota.tambah-kelompok.process');
+    Route::get('/kabar-berita', [KabarBeritaController::class, 'index'])->name('kabar-berita.index');
+    Route::get('/kabar-berita/{id}', [KabarBeritaController::class, 'show'])->name('kabar-berita.show');
+    Route::get('/pasar-tani', [UsahaAnggotaController::class, 'index'])->name('pasar-tani');
 });
 
 Route::middleware(['auth', CheckRole::class.':anggota,user'])->group(function () {
@@ -49,7 +52,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/pusat-informasi/{id}', [PusatInformasiController::class, 'update'])->name('pusat-informasi.update');
     Route::delete('/pusat-informasi/{id}', [PusatInformasiController::class, 'destroy'])->name('pusat-informasi.destroy');
 //Tentang Kami
-    Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami.index');
+    Route::get('/tentang-kami', [TentangKamiController::class, 'show'])->name('tentang-kami.index');
     Route::post('/tentang-kami', [TentangKamiController::class, 'store'])->name('tentang-kami.store');
 //Kabar Berita
     Route::get('/kabarberita', [KabarBeritaController::class,'index'])->name('kabarberita.index');
