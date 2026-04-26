@@ -118,24 +118,28 @@
             </div>
 
             <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-5 md:gap-6">
-                @for ($i = 0; $i < 5; $i++)
-                    <div
-                        class="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1">
-                        <div class="aspect-[3/4] overflow-hidden bg-gray-100">
-                            <img src="{{ asset('assets/images/team.jpg') }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                                alt="Team">
+                @if(isset($struktur_organisasi) && $struktur_organisasi->count() > 0)
+                    @foreach ($struktur_organisasi as $org)
+                        <div
+                            class="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1">
+                            <div class="aspect-[3/4] overflow-hidden bg-gray-100">
+                                <img src="{{ asset('images/struktur-organisasi/' . $org->image) }}"
+                                    class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                                    alt="{{ $org->nama_lengkap }}">
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="font-semibold text-base md:text-lg text-gray-900 leading-snug">
+                                    {{ $org->nama_lengkap }}
+                                </h3>
+                                <p class="text-green-600 font-medium text-sm mt-1">
+                                    {{ $org->jabatan }}
+                                </p>
+                            </div>
                         </div>
-                        <div class="p-4 text-center">
-                            <h3 class="font-semibold text-base md:text-lg text-gray-900 leading-snug">
-                                Budiman Sugiarto
-                            </h3>
-                            <p class="text-gray-500 text-sm mt-1">
-                                Marketing
-                            </p>
-                        </div>
-                    </div>
-                @endfor
+                    @endforeach
+                @else
+                    <p class="text-gray-500 col-span-full text-center py-8">Belum ada data tim yang ditambahkan.</p>
+                @endif
             </div>
         </div>
     </div>

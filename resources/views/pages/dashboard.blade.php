@@ -75,6 +75,28 @@
             </div>
         </div>
 
+        <!-- STRUKTUR ORGANISASI (TENTANG KAMI) -->
+        @if(isset($struktur_organisasi) && $struktur_organisasi->count() > 0)
+        <div class="mt-20">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 md:mb-10 text-center md:text-left tracking-tight">
+                Tentang Kami - Struktur Organisasi</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+                @foreach ($struktur_organisasi as $org)
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition transform hover:-translate-y-1">
+                        <img src="{{ asset('images/struktur-organisasi/' . $org->image) }}" 
+                             class="w-full h-64 object-cover object-top" 
+                             alt="{{ $org->nama_lengkap }}">
+                        <div class="p-5 text-center">
+                            <h3 class="font-bold text-xl text-gray-900 mb-1">{{ $org->nama_lengkap }}</h3>
+                            <p class="text-green-700 font-medium">{{ $org->jabatan }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
+
         <!-- BERITA TERKINI -->
         <div class="mt-20">
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 md:mb-10 text-center md:text-left tracking-tight">

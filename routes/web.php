@@ -8,11 +8,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\KabarBeritaController;
 use App\Http\Controllers\PusatInformasiController;
-
+use App\Http\Controllers\StrukturOrganisasiController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/',[AuthController::class,'Beranda'])->name('beranda');
-    Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
+    Route::get('/tentang-kami', [TentangKamiController::class, 'show'])->name('tentang-kami');
     Route::get('/login', [AuthController::class, 'LoginPage'])->name('login');
     Route::post('/login', [AuthController::class, 'LoginProcess']);
     Route::get('/daftar/anggota', [AuthController::class, 'RegisterPage'])->name('daftar.anggota');
@@ -28,7 +28,11 @@ Route::middleware(['auth', CheckRole::class.':anggota,user'])->group(function ()
     Route::post('/logout', [AuthController::class, 'Logout'])->name('logout');
 
     Route::get('/dashboard', function () {
-        return view('dashboard'); //dashboard user dan anggota
+        $struktur_organisasi = \App\Models\Struktur_organisasi::all();
+        if (view()->exists('pages.dashboard')) {
+            return view('pages.dashboard', compact('struktur_organisasi'));
+        }
+        return view('dashboard', compact('struktur_organisasi'));
     })->name('dashboard');
 });
 
@@ -51,9 +55,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/pusat-informasi/{id}/edit', [PusatInformasiController::class, 'edit'])->name('pusat-informasi.edit');
     Route::put('/pusat-informasi/{id}', [PusatInformasiController::class, 'update'])->name('pusat-informasi.update');
     Route::delete('/pusat-informasi/{id}', [PusatInformasiController::class, 'destroy'])->name('pusat-informasi.destroy');
-//Tentang Kami
-    Route::get('/tentang-kami', [TentangKamiController::class, 'show'])->name('tentang-kami.index');
-    Route::post('/tentang-kami', [TentangKamiController::class, 'store'])->name('tentang-kami.store');
+
 //Kabar Berita
     Route::get('/kabarberita', [KabarBeritaController::class,'index'])->name('kabarberita.index');
     Route::get('/kabarberita/create', [KabarBeritaController::class,'create'])->name('kabarberita.create');
@@ -62,4 +64,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/kabarberita/{id}/edit', [KabarBeritaController::class,'edit'])->name('kabarberita.edit');
     Route::put('/kabarberita/{id}', [KabarBeritaController::class,'update'])->name('kabarberita.update');
     Route::delete('/kabarberita/{id}', [KabarBeritaController::class,'destroy'])->name('kabarberita.destroy');
+
+    // Struktur Organisasi
+    Route::post('/struktur-organisasi', [StrukturOrganisasiController::class, 'store'])->name('struktur-organisasi.store');
 });
