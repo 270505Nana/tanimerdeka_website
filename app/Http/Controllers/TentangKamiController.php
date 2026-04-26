@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tentang_kami;
+use App\Models\Struktur_organisasi;
 use Illuminate\Http\Request;
 
 class TentangKamiController extends Controller
@@ -59,7 +60,8 @@ class TentangKamiController extends Controller
 
     public function show()
     {
-        $data = Tentang_kami::find(1);
-        return view('pages.tentangkami', compact('data'));
+        $data = Tentang_kami::first();
+        $struktur_organisasi = Struktur_organisasi::all();
+        return view('pages.tentangkami', compact('data', 'struktur_organisasi'));
     }
 }

@@ -12,7 +12,7 @@ use App\Http\Controllers\StrukturOrganisasiController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/',[AuthController::class,'Beranda'])->name('beranda');
-    Route::get('/tentang-kami', [TentangKamiController::class, 'index'])->name('tentang-kami');
+    Route::get('/tentang-kami', [TentangKamiController::class, 'show'])->name('tentang-kami');
     Route::get('/login', [AuthController::class, 'LoginPage'])->name('login');
     Route::post('/login', [AuthController::class, 'LoginProcess']);
     Route::get('/daftar/anggota', [AuthController::class, 'RegisterPage'])->name('daftar.anggota');
@@ -55,9 +55,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/pusat-informasi/{id}/edit', [PusatInformasiController::class, 'edit'])->name('pusat-informasi.edit');
     Route::put('/pusat-informasi/{id}', [PusatInformasiController::class, 'update'])->name('pusat-informasi.update');
     Route::delete('/pusat-informasi/{id}', [PusatInformasiController::class, 'destroy'])->name('pusat-informasi.destroy');
-//Tentang Kami
-    Route::get('/tentang-kami', [TentangKamiController::class, 'show'])->name('tentang-kami.index');
-    Route::post('/tentang-kami', [TentangKamiController::class, 'store'])->name('tentang-kami.store');
+
 //Kabar Berita
     Route::get('/kabarberita', [KabarBeritaController::class,'index'])->name('kabarberita.index');
     Route::get('/kabarberita/create', [KabarBeritaController::class,'create'])->name('kabarberita.create');
