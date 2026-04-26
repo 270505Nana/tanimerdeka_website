@@ -59,8 +59,7 @@ class TentangKamiController extends Controller
 
     public function show()
     {
-        $data = Tentang_kami::first();
-        $struktur_organisasi = \App\Models\Struktur_organisasi::all();
-        return view('pages.tentangkami', compact('data', 'struktur_organisasi'));
+        $data = Tentang_kami::find(1);
+        return view('pages.tentangkami', compact('data'));
     }
 }

@@ -5,10 +5,10 @@
 @section('content')
     <div class="px-6 md:px-16 py-8">
 
-        <div class="relative rounded-3xl overflow-hidden shadow-lg flex items-center min-h-[350px] md:min-h-[400px]">
+        <div class="relative rounded-3xl overflow-hidden flex items-center min-h-[350px] md:min-h-[400px]">
             <img src="{{ asset('assets/images/background.png') }}" class="absolute inset-0 w-full h-full object-cover"
                 alt="Hero Banner">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
 
             <div class="relative z-10 w-full md:w-2/3 text-white px-8 md:px-14 py-12 space-y-6 text-left">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">

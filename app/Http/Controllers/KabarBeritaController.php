@@ -12,9 +12,18 @@ class KabarBeritaController extends Controller
     {
         $posts = Kabar_berita::latest()->paginate(10);
 
-        return view('admin.kabarberita.index', compact('posts'));
-    }
+        $view = auth()->check() && auth()->user()->role === 'admin'
+        ? 'admin.kabarberita.index'
+        : 'pages.kabar_berita';
 
+        return view($view, compact('posts'));       
+    }
+    
+    /*
+     * =====================================
+     * FORM CREATE
+     * =====================================
+     */
     public function create()
     {
         $latestPosts = Kabar_berita::latest()->take(5)->get();
@@ -50,8 +59,12 @@ class KabarBeritaController extends Controller
     public function show($id)
     {
         $berita = Kabar_berita::findOrFail($id);
+        
+        $view = auth()->check() && auth()->user()->role === 'admin'
+        ? 'admin.kabarberita.show'
+        : 'pages.kabar_berita_detail';
 
-        return view('admin.kabarberita.show', compact('berita'));
+        return view($view, compact('berita'));
     }
 
     public function edit($id)
