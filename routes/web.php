@@ -8,7 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\KabarBeritaController;
 use App\Http\Controllers\PusatInformasiController;
-
+use App\Http\Controllers\StrukturOrganisasiController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/',[AuthController::class,'Beranda'])->name('beranda');
@@ -25,7 +25,11 @@ Route::middleware(['auth', CheckRole::class.':anggota,user'])->group(function ()
     Route::post('/logout', [AuthController::class, 'Logout'])->name('logout');
 
     Route::get('/dashboard', function () {
-        return view('dashboard'); //dashboard user dan anggota
+        $struktur_organisasi = \App\Models\Struktur_organisasi::all();
+        if (view()->exists('pages.dashboard')) {
+            return view('pages.dashboard', compact('struktur_organisasi'));
+        }
+        return view('dashboard', compact('struktur_organisasi'));
     })->name('dashboard');
 });
 
@@ -59,4 +63,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/kabarberita/{id}/edit', [KabarBeritaController::class,'edit'])->name('kabarberita.edit');
     Route::put('/kabarberita/{id}', [KabarBeritaController::class,'update'])->name('kabarberita.update');
     Route::delete('/kabarberita/{id}', [KabarBeritaController::class,'destroy'])->name('kabarberita.destroy');
+
+    // Struktur Organisasi
+    Route::post('/struktur-organisasi', [StrukturOrganisasiController::class, 'store'])->name('struktur-organisasi.store');
 });

@@ -9,7 +9,7 @@ class TentangKamiController extends Controller
 {
     public function index()
     {
-        $data = Tentang_kami::firstOrCreate([]);
+        $data = Tentang_kami::first() ?? new Tentang_kami();
         return view('admin.tentangkami.form_tentangkami', compact('data'));
     }
 
@@ -22,42 +22,45 @@ class TentangKamiController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ]);
 
-        $data = Tentang_kami::firstOrCreate([]);
+        try {
+            $data = Tentang_kami::first() ?? new Tentang_kami();
 
-        // update data
-        $data->deskripsi_program = $request->deskripsi_program;
-        $data->visi = $request->visi;
-        $data->misi = $request->misi;
+            // update data
+            $data->deskripsi_program = $request->deskripsi_program;
+            $data->visi = $request->visi;
+            $data->misi = $request->misi;
 
-        if ($request->hasFile('image')) {
-            $destinationPath = public_path('images/tentang-kami');
+            if ($request->hasFile('image')) {
+                $destinationPath = public_path('images/tentang-kami');
 
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0777, true);
+                if (!file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0777, true);
+                }
+
+                // hapus gambar lama
+                if ($data->image && file_exists($destinationPath . '/' . $data->image)) {
+                    unlink($destinationPath . '/' . $data->image);
+                }
+
+                $image = $request->file('image');
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $filename);
+
+                $data->image = $filename;
             }
 
-            // hapus gambar lama
-            if ($data->image && file_exists($destinationPath . '/' . $data->image)) {
-                unlink($destinationPath . '/' . $data->image);
-            }
+            $data->save();
 
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $filename);
-
-            $data->image = $filename;
+            return redirect()->route('admin.tentang-kami.index')->with('success', 'Data berhasil diperbarui!');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.tentang-kami.index')->with('error', 'Terjadi kesalahan saat menyimpan data!');
         }
-
-        $data->save();
-
-        return redirect()
-            ->route('admin.tentang-kami.index')
-            ->with('success', 'Data berhasil diperbarui!');
     }
 
     public function show()
     {
-        $data = Tentang_kami::find(1);
-        return view('pages.tentangkami', compact('data'));
+        $data = Tentang_kami::first();
+        $struktur_organisasi = \App\Models\Struktur_organisasi::all();
+        return view('pages.tentangkami', compact('data', 'struktur_organisasi'));
     }
 }
